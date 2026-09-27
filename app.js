@@ -54,6 +54,34 @@ const services = [
     official: "#northline"
   },
   {
+    id: "shunyun-airport",
+    name: "瞬云机场",
+    subtitle: "轻量入门 · 多设备方案",
+    mark: "瞬",
+    color: "#587c9c",
+    score: 90.8,
+    stability: 92.6,
+    speed: 91.4,
+    value: 94,
+    stream: 88,
+    price: 28,
+    annual: 268,
+    traffic: "200 GB",
+    devices: "5 台",
+    region: ["global", "asia", "na", "eu"],
+    tags: ["高性价比", "多设备", "套餐灵活", "待核实"],
+    summary: "瞬云机场是一项面向日常跨地区网络访问、流媒体和 AI 工具使用场景的订阅服务。本页内容为 SEO/GEO 编辑草稿，适合用于初步了解服务定位，具体套餐与线路表现请以官网为准。",
+    update: "09.27.2026",
+    location: "亚洲 / 北美 / 欧洲等地区（待核实）",
+    platforms: "Windows / macOS / iOS / Android（待核实）",
+    refund: "以官网当前条款为准",
+    support: "以官网实际客服渠道为准",
+    trend: [78, 82, 80, 86, 84, 88, 87],
+    dataSource: "官网基础信息有限，以下套餐、评分与能力标签为编辑生成草稿，待独立复测",
+    scoreNote: "SEO/GEO 内容估算，不代表独立测试结果",
+    official: "https://ccc.jichang.best/#/register?code=4vNYA1SS"
+  },
+  {
     id: "orbit-link",
     name: "Orbit Link",
     subtitle: "轨道连接",
@@ -324,7 +352,7 @@ function renderServiceModal(service) {
       <div class="modal-score"><span>性价比</span><strong>${service.value}</strong></div>
     </div>
     <p class="modal-description">${service.summary}</p>
-    ${service.dataSource ? `<div class="data-disclosure"><span>${icon("info")}</span><div><strong>数据来源</strong><p>${service.dataSource}。当前综合评分为${service.scoreNote}。</p></div></div>` : ""}
+    ${service.dataSource ? `<div class="data-disclosure ${service.id === "shunyun-airport" ? "draft-disclosure" : ""}"><span>${icon(service.id === "shunyun-airport" ? "triangle-alert" : "info")}</span><div><strong>${service.id === "shunyun-airport" ? "编辑草稿 / 待核实" : "数据来源"}</strong><p>${service.dataSource}。当前综合评分为${service.scoreNote}。</p></div></div>` : ""}
     <div class="detail-grid">
       <div class="detail-item"><span class="detail-label">套餐流量</span><strong>${service.traffic}</strong></div>
       <div class="detail-item"><span class="detail-label">设备数量</span><strong>${service.devices}</strong></div>
