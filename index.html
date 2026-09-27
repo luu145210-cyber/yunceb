@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <meta
+      name="description"
+      content="云测榜：用公开测试数据比较稳定性、速度、价格与服务体验。"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>云测榜 · 服务排行榜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="云测榜首页">
+          <span class="brand-mark">Y</span>
+          <span class="brand-copy">
+            <strong>云测榜</strong>
+            <small>DATA, NOT HYPE</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="主导航">
+          <a class="active" href="#rankings">排行榜</a>
+          <a href="#compare">对比</a>
+          <a href="#guides">指南</a>
+          <a href="#method">测试方法</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <button class="icon-button search-trigger" type="button" aria-label="搜索服务" title="搜索服务">
+            <i data-lucide="search"></i>
+          </button>
+          <a class="submit-link" href="#submit">
+            <i data-lucide="plus"></i>
+            提交服务
+          </a>
+          <button class="menu-button" type="button" aria-label="打开导航">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="overview-band">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="live-dot"></span> 公开测试榜单 / 09.27.2026</p>
+              <h1>找到值得长期使用的服务。</h1>
+              <p class="heading-note">
+                每周采集速度、稳定性、解锁能力与价格变化，用统一口径帮你做更少猜测的选择。
+              </p>
+            </div>
+            <div class="update-stamp">
+              <span>最近更新</span>
+              <strong>今天 09:40</strong>
+              <small>下次采集 6 小时后</small>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="榜单概览">
+            <article class="metric-card">
+              <span class="metric-label">正在追踪</span>
+              <strong>48</strong>
+              <span class="metric-caption">个服务，覆盖 12 个地区</span>
+            </article>
+            <article class="metric-card accent-card">
+              <span class="metric-label">本周平均稳定性</span>
+              <strong>96.4<span>%</span></strong>
+              <span class="metric-caption">较上周 <b>+1.8%</b></span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">已完成测试</span>
+              <strong>2,184</strong>
+              <span class="metric-caption">过去 30 天公开记录</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">价格变动</span>
+              <strong>7</strong>
+              <span class="metric-caption">个服务本周更新套餐</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="ranking-section" id="rankings">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">RANKINGS / 01</p>
+              <h2>本月综合榜</h2>
+            </div>
+            <p class="section-aside">评分由稳定性、速度、性价比、支持能力与透明度共同构成。</p>
+          </div>
+
+          <div class="ranking-tabs" role="tablist" aria-label="排行榜类型">
+            <button class="ranking-tab active" data-sort="score" role="tab" aria-selected="true">
+              综合表现
+            </button>
+            <button class="ranking-tab" data-sort="stability" role="tab" aria-selected="false">
+              稳定性
+            </button>
+            <button class="ranking-tab" data-sort="value" role="tab" aria-selected="false">
+              性价比
+            </button>
+            <button class="ranking-tab" data-sort="stream" role="tab" aria-selected="false">
+              流媒体 & AI
+            </button>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-field">
+              <i data-lucide="search"></i>
+              <input id="service-search" type="search" placeholder="搜索服务名称或标签" autocomplete="off" />
+            </label>
+            <label class="select-field">
+              <span>测试地区</span>
+              <select id="region-filter">
+                <option value="global">全球</option>
+                <option value="asia">东亚</option>
+                <option value="na">北美</option>
+                <option value="eu">欧洲</option>
+              </select>
+              <i data-lucide="chevron-down"></i>
+            </label>
+            <div class="budget-filter" aria-label="月付预算">
+              <span>月付</span>
+              <button class="budget-option active" data-budget="all">不限</button>
+              <button class="budget-option" data-budget="under50">¥50 内</button>
+              <button class="budget-option" data-budget="under100">¥100 内</button>
+            </div>
+            <button class="filter-reset" id="reset-filters" type="button" title="重置筛选">
+              <i data-lucide="rotate-ccw"></i>
+              重置
+            </button>
+          </div>
+
+          <div class="ranking-layout">
+            <div class="ranking-list-wrap">
+              <div class="list-meta">
+                <span id="result-count">显示 6 个服务</span>
+                <span class="data-note"><i data-lucide="shield-check"></i> 数据经人工复核</span>
+              </div>
+              <div class="ranking-list" id="ranking-list"></div>
+              <div class="empty-state" id="empty-state" hidden>
+                <i data-lucide="scan-search"></i>
+                <strong>没有匹配的服务</strong>
+                <span>换一个关键词或放宽筛选条件试试。</span>
+              </div>
+            </div>
+
+            <aside class="insight-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">EDITOR'S NOTE</p>
+                  <h3>本周观察</h3>
+                </div>
+                <span class="date-chip">W39</span>
+              </div>
+              <div class="insight-lead">
+                <span class="insight-number">01</span>
+                <div>
+                  <strong>稳定性正在拉开差距</strong>
+                  <p>前 10 名服务的平均掉线次数比上月减少 18%，晚高峰表现更值得关注。</p>
+                </div>
+              </div>
+              <div class="insight-row">
+                <span>表现提升最多</span>
+                <strong>Orbit Link <em>+8.2</em></strong>
+              </div>
+              <div class="insight-row">
+                <span>价格变化最多</span>
+                <strong>3 个服务</strong>
+              </div>
+              <div class="insight-row">
+                <span>建议复测</span>
+                <strong>CloudMile <i data-lucide="arrow-up-right"></i></strong>
+              </div>
+              <a class="text-link" href="#guides">查看本周完整报告 <i data-lucide="arrow-right"></i></a>
+            </aside>
+          </div>
+        </section>
+
+        <section class="trust-section" id="method">
+          <div class="trust-copy">
+            <p class="eyebrow">HOW WE SCORE</p>
+            <h2>每个数字，<br />都带着时间戳。</h2>
+            <p>
+              榜单不是广告位。我们保留每次采集的时间、地区和测试环境，让你看到服务的长期表现，而不是某一个漂亮的瞬间。
+            </p>
+            <a class="outline-link" href="#guides">了解评分方法 <i data-lucide="arrow-up-right"></i></a>
+          </div>
+          <div class="score-breakdown">
+            <div class="score-ring">
+              <div>
+                <strong>100</strong>
+                <span>总分</span>
+              </div>
+            </div>
+            <div class="score-lines">
+              <div class="score-line">
+                <div><span>稳定性</span><b>30</b></div>
+                <span class="bar"><i style="width: 30%"></i></span>
+              </div>
+              <div class="score-line">
+                <div><span>速度</span><b>20</b></div>
+                <span class="bar orange"><i style="width: 20%"></i></span>
+              </div>
+              <div class="score-line">
+                <div><span>性价比</span><b>20</b></div>
+                <span class="bar pink"><i style="width: 20%"></i></span>
+              </div>
+              <div class="score-line">
+                <div><span>服务支持</span><b>20</b></div>
+                <span class="bar yellow"><i style="width: 20%"></i></span>
+              </div>
+              <div class="score-line">
+                <div><span>信息透明度</span><b>10</b></div>
+                <span class="bar gray"><i style="width: 10%"></i></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="guide-section" id="guides">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">FIELD NOTES / 02</p>
+              <h2>选择之前，先看懂数据。</h2>
+            </div>
+            <a class="text-link" href="#guides">全部指南 <i data-lucide="arrow-right"></i></a>
+          </div>
+          <div class="guide-grid">
+            <a class="guide-card guide-card-dark" href="#guide-1">
+              <span class="guide-index">01 / 入门</span>
+              <h3>速度、延迟和稳定性，应该先看哪个？</h3>
+              <span class="guide-foot">阅读 6 分钟 <i data-lucide="arrow-up-right"></i></span>
+            </a>
+            <a class="guide-card guide-card-light" href="#guide-2">
+              <span class="guide-index">02 / 价格</span>
+              <h3>别只看月付：套餐价格的 4 个隐藏变量</h3>
+              <span class="guide-foot">阅读 4 分钟 <i data-lucide="arrow-up-right"></i></span>
+            </a>
+            <a class="guide-card guide-card-orange" href="#guide-3">
+              <span class="guide-index">03 / 使用</span>
+              <h3>为什么同一个服务，每个人测出来不一样？</h3>
+              <span class="guide-foot">阅读 5 分钟 <i data-lucide="arrow-up-right"></i></span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="brand-mark">Y</span>
+          <div>
+            <strong>云测榜</strong>
+            <span>Independent service index</span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#about">关于我们</a>
+          <a href="#method">测试方法</a>
+          <a href="#privacy">隐私政策</a>
+          <a href="#contact">联系</a>
+        </div>
+        <p>© 2026 云测榜 · 仅作信息参考，请以服务商官方信息为准。</p>
+      </footer>
+    </div>
+
+    <div class="compare-dock" id="compare-dock" aria-live="polite" hidden>
+      <div class="compare-dock-copy">
+        <span class="compare-icon"><i data-lucide="columns-3"></i></span>
+        <div>
+          <strong>准备好比较了吗？</strong>
+          <span id="compare-count">已选择 0 个服务</span>
+        </div>
+      </div>
+      <div class="compare-dock-items" id="compare-dock-items"></div>
+      <div class="compare-dock-actions">
+        <button class="ghost-button" id="clear-compare" type="button">清空</button>
+        <button class="primary-button" id="open-compare" type="button" disabled>
+          开始对比 <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <dialog class="service-modal" id="service-modal">
+      <div class="modal-content" id="modal-content"></div>
+    </dialog>
+
+    <dialog class="compare-modal" id="compare-modal">
+      <div class="compare-modal-content">
+        <div class="modal-topline">
+          <div>
+            <p class="eyebrow">SIDE BY SIDE</p>
+            <h2>服务对比</h2>
+          </div>
+          <button class="icon-button close-modal" type="button" aria-label="关闭对比">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div id="compare-table-wrap"></div>
+      </div>
+    </dialog>
+
+    <script src="https://unpkg.com/lucide@0.468.0"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
