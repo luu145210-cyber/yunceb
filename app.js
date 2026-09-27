@@ -23,6 +23,8 @@ const services = [
     refund: "虚拟产品不可退款",
     support: "24 小时在线客服、工单、邮件",
     trend: [93, 96, 95, 98, 97, 98, 98],
+    dataSource: "用户提供的公开资料，待独立复测",
+    scoreNote: "稳定性、速度、性价比三项平均值",
     official: "https://vip.ytjcok.org/#/register?code=Oxsv1mJl"
   },
   {
@@ -322,9 +324,11 @@ function renderServiceModal(service) {
       <div class="modal-score"><span>性价比</span><strong>${service.value}</strong></div>
     </div>
     <p class="modal-description">${service.summary}</p>
+    ${service.dataSource ? `<div class="data-disclosure"><span>${icon("info")}</span><div><strong>数据来源</strong><p>${service.dataSource}。当前综合评分为${service.scoreNote}。</p></div></div>` : ""}
     <div class="detail-grid">
       <div class="detail-item"><span class="detail-label">套餐流量</span><strong>${service.traffic}</strong></div>
       <div class="detail-item"><span class="detail-label">设备数量</span><strong>${service.devices}</strong></div>
+      <div class="detail-item"><span class="detail-label">年付价格</span><strong>¥${service.annual}</strong></div>
       <div class="detail-item"><span class="detail-label">测试地区</span><strong>${service.location}</strong></div>
       <div class="detail-item"><span class="detail-label">支持平台</span><strong>${service.platforms}</strong></div>
       <div class="detail-item"><span class="detail-label">退款政策</span><strong>${service.refund}</strong></div>
