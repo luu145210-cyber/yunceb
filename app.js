@@ -5,6 +5,7 @@ const services = [
     subtitle: "AI 助手 · 晚高峰稳定",
     mark: "云",
     color: "#4f837d",
+    editorRank: 1,
     score: 93.4,
     stability: 98.2,
     speed: 94.1,
@@ -33,6 +34,7 @@ const services = [
     subtitle: "北线网络",
     mark: "N",
     color: "#597b73",
+    editorRank: 3,
     score: 96.8,
     stability: 98.2,
     speed: 94.1,
@@ -59,6 +61,7 @@ const services = [
     subtitle: "轻量入门 · 多设备方案",
     mark: "瞬",
     color: "#587c9c",
+    editorRank: 2,
     score: 90.8,
     stability: 92.6,
     speed: 91.4,
@@ -263,7 +266,12 @@ function getFilteredServices() {
     return matchesQuery && matchesRegion && matchesBudget;
   });
 
-  return filtered.sort((a, b) => b[state.sort] - a[state.sort]);
+  return filtered.sort((a, b) => {
+    if (state.sort === "score") {
+      return (a.editorRank ?? 99) - (b.editorRank ?? 99) || b.score - a.score;
+    }
+    return b[state.sort] - a[state.sort];
+  });
 }
 
 function renderRankings() {
